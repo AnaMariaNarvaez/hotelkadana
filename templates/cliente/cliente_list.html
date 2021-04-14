@@ -1,0 +1,56 @@
+{% extends 'base/base.html'%}
+{% block content %}
+<table class="table table-bordered">
+ <!-- <a href="{% url 'cliente_crear'%}" class='btn btn-success'> Ingresar </a> -->
+    <thead>
+        <tr>
+
+            <td>nombre</td>
+            <td>apellidos</td>
+            <td>edad</td>
+            <td>telefono</td>
+            <td>email</td>
+            <td>domicilio</td>
+            <td>nacionalidad</td>
+
+            <td>Interaciones</td>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for Cliente in object_list %}
+        <tr>
+            <td>{{Cliente.nombre}}</td>
+            <td>{{Cliente.apellidos}}</td>
+            <td>{{Cliente.edad}}</td>
+            <td>{{Cliente.telefono}}</td>
+            <td>{{Cliente.email}}</td>
+            <td>{{Cliente.domicilio}}</td>
+            <td>{{Cliente.nacionalidad}}</td>
+
+            <td>
+
+                <a class='btn btn-warning' href="{%url 'Cliente_actualizar' Cliente.id%}">Editar</a>
+                <a class='btn btn-warning' href="{%url 'Cliente_eliminar' Cliente.id%}">Eliminar</a>
+
+            
+            </td>
+            
+
+
+        </tr>
+        {% endfor %}
+       
+        {% else %}
+        
+        <h1> No se encuentran los datos</h1>
+        {% endif %}
+
+       
+
+    </tbody>
+    </table>
+
+    {% endblock %}

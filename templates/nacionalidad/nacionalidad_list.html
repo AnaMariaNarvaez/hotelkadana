@@ -1,0 +1,55 @@
+{% extends 'base/base.html'%}
+{% block content %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+
+            <td>Id</td>
+            <td>Pais</td>
+            <td>Provincia</td>
+            <td>Codigo</td>
+            
+            <td>Acciones</td> 
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for nacionalidad in object_list %}
+
+        <tr>
+            <td>{{ nacionalidad.id}}</td>
+            <td>{{ nacionalidad.Pais}}</td>
+            <td>{{ nacionalidad.Provincia}}</td>
+            <td>{{ nacionalidad.Codigo}}</td>
+
+
+
+            <td>
+
+                <a class='btn btn-warning' href="{% url 'nacionalidad_actualizar' nacionalidad.id %}">Editar</a>
+                <a class='btn btn-warning' href="{% url 'nacionalidad_eliminar' nacionalidad.id %}">Eliminar</a>
+                
+        
+            </td> 
+           
+
+
+            
+
+
+
+        </tr>
+        {% endfor %}
+       
+        {% else %}
+        
+        <h1> No se encuentran los datos</h1>
+        {% endif %}
+
+       
+
+    </tbody>
+    </table>
+
+    {% endblock %}
